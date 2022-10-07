@@ -55,6 +55,7 @@ class _ExpensePageState extends State<ExpensePage> {
           ),
           Text(
             "\$$getTotalPrice",
+            style: const TextStyle(fontSize: 25),
           )
         ],
       ),
