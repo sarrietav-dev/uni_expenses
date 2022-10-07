@@ -19,6 +19,12 @@ class _ExpensePageState extends State<ExpensePage> {
         : _expenses.values.reduce((value, element) => value + element);
   }
 
+  void handleInputChange(double price, String key) {
+    setState(() {
+      _expenses[key] = price;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,23 +42,14 @@ class _ExpensePageState extends State<ExpensePage> {
                 child: ExpenseInput(
                   icon: const Icon(Icons.bus_alert),
                   expensePrice: 2700,
-                  onChanged: (price) {
-                    setState(() {
-                      _expenses["bus"] = price;
-                    });
-                  },
+                  onChanged: (price) => handleInputChange(price, "food"),
                 ),
               ),
               _InputLayoutWrapper(
                 child: ExpenseInput(
-                  icon: const Icon(Icons.restaurant),
-                  expensePrice: 10000,
-                  onChanged: (price) {
-                    setState(() {
-                      _expenses["food"] = price;
-                    });
-                  },
-                ),
+                    icon: const Icon(Icons.restaurant),
+                    expensePrice: 10000,
+                    onChanged: ((price) => handleInputChange(price, "bus"))),
               )
             ],
           ),
