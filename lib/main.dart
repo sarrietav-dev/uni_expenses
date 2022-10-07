@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:uni_expenses/widgets/expense_input.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +30,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _totalPrice = 0;
+  double _totalPrice = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -40,16 +40,14 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          TextField(
-            onChanged: (value) {
+          ExpenseInput(
+            icon: const Icon(Icons.bus_alert),
+            expensePrice: 2700,
+            onChanged: (price) {
               setState(() {
-                _totalPrice = 2700 * int.parse(value == '' ? '0' : value);
+                _totalPrice = price;
               });
             },
-            keyboardType: TextInputType.number,
-            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            decoration: const InputDecoration(
-                icon: Icon(Icons.bus_alert), border: OutlineInputBorder()),
           ),
           Text("\$$_totalPrice")
         ],
