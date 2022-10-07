@@ -44,14 +44,31 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ExpenseInput(
-            icon: const Icon(Icons.bus_alert),
-            expensePrice: 2700,
-            onChanged: (price) {
-              setState(() {
-                _totalPrice = price;
-              });
-            },
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Expanded(
+                child: ExpenseInput(
+                  icon: const Icon(Icons.bus_alert),
+                  expensePrice: 2700,
+                  onChanged: (price) {
+                    setState(() {
+                      _expenses["bus"] = price;
+                    });
+                  },
+                ),
+              ),
+              Expanded(
+                  child: ExpenseInput(
+                icon: const Icon(Icons.restaurant),
+                expensePrice: 10000,
+                onChanged: (price) {
+                  setState(() {
+                    _expenses["food"] = price;
+                  });
+                },
+              ))
+            ],
           ),
           Text("\$$getTotalPrice")
         ],
