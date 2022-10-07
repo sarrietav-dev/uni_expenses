@@ -22,7 +22,7 @@ class ExpenseInput extends StatelessWidget {
       keyboardType: TextInputType.number,
       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
       decoration: InputDecoration(
-          icon: icon, border: const OutlineInputBorder()),
+          prefixIcon: icon, border: const OutlineInputBorder()),
     );
   }
 }
