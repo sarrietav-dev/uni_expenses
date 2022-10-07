@@ -10,7 +10,7 @@ class ExpenseInput extends StatelessWidget {
 
   final Icon icon;
   final double expensePrice;
-  final Function(double) onChanged;
+  final Function(double price) onChanged;
 
   @override
   Widget build(BuildContext context) {
