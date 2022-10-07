@@ -30,7 +30,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  double _totalPrice = 0;
+  final Map<String, double> _expenses = {};
+
+  get getTotalPrice {
+    return _expenses.values.reduce((value, element) => value + element);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
               });
             },
           ),
-          Text("\$$_totalPrice")
+          Text("\$$getTotalPrice")
         ],
       ),
     );
