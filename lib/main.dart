@@ -33,7 +33,9 @@ class _MyHomePageState extends State<MyHomePage> {
   final Map<String, double> _expenses = {};
 
   get getTotalPrice {
-    return _expenses.values.reduce((value, element) => value + element);
+    return _expenses.values.isEmpty
+        ? 0
+        : _expenses.values.reduce((value, element) => value + element);
   }
 
   @override
@@ -46,27 +48,34 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Row(
             mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Expanded(
-                child: ExpenseInput(
-                  icon: const Icon(Icons.bus_alert),
-                  expensePrice: 2700,
-                  onChanged: (price) {
-                    setState(() {
-                      _expenses["bus"] = price;
-                    });
-                  },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
+                  child: ExpenseInput(
+                    icon: const Icon(Icons.bus_alert),
+                    expensePrice: 2700,
+                    onChanged: (price) {
+                      setState(() {
+                        _expenses["bus"] = price;
+                      });
+                    },
+                  ),
                 ),
               ),
               Expanded(
-                  child: ExpenseInput(
-                icon: const Icon(Icons.restaurant),
-                expensePrice: 10000,
-                onChanged: (price) {
-                  setState(() {
-                    _expenses["food"] = price;
-                  });
-                },
+                  child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                child: ExpenseInput(
+                  icon: const Icon(Icons.restaurant),
+                  expensePrice: 10000,
+                  onChanged: (price) {
+                    setState(() {
+                      _expenses["food"] = price;
+                    });
+                  },
+                ),
               ))
             ],
           ),
