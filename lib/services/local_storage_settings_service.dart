@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uni_expenses/models/setting_context.dart';
-import 'package:uni_expenses/services/I_settings_service.dart';
+import 'package:uni_expenses/services/settings_service.dart';
 
 class LocalStorageSettingService implements ISettingsService {
   @override
