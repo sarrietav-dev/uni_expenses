@@ -15,7 +15,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ExpensePage(title: 'College expenses'),
+      routes: {
+        "/": (context) => const ExpensePage(title: "College expenses"),
+      },
     );
   }
 }
