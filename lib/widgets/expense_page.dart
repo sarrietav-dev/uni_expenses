@@ -28,7 +28,9 @@ class _ExpensePageState extends State<ExpensePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
+      appBar: AppBar(title: Text(widget.title), actions: [
+        IconButton(onPressed: () {}, icon: const Icon(Icons.settings))
+      ]),
       body: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
