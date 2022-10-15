@@ -19,18 +19,18 @@ class _SettingsPageState extends State<SettingsPage> {
         onPressed: () => Navigator.of(context).pop(),
         child: const Icon(Icons.save),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(children: [
-          CheckboxListTile(
-            value: _isDoubleRide,
-            onChanged: (value) => setState(() {
-              _isDoubleRide = value ?? false;
-            }),
-            title: const Text("Double ride"),
-            controlAffinity: ListTileControlAffinity.leading,
-          ),
-          Row(
+      body: Column(children: [
+        CheckboxListTile(
+          value: _isDoubleRide,
+          onChanged: (value) => setState(() {
+            _isDoubleRide = value ?? false;
+          }),
+          title: const Text("Double ride"),
+          controlAffinity: ListTileControlAffinity.leading,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
             children: [
               const Text("Bus price: "),
               const SizedBox(width: 10),
@@ -44,9 +44,9 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               )
             ],
-          )
-        ]),
-      ),
+          ),
+        )
+      ]),
     );
   }
 }
