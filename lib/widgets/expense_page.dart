@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uni_expenses/constants/routes.dart';
 import 'expense_input.dart';
 
 class ExpensePage extends StatefulWidget {
@@ -29,7 +30,10 @@ class _ExpensePageState extends State<ExpensePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.title), actions: [
-        IconButton(onPressed: () {}, icon: const Icon(Icons.settings))
+        IconButton(
+            onPressed: () =>
+                Navigator.of(context).pushNamed(AppRoute.settings.route),
+            icon: const Icon(Icons.settings))
       ]),
       body: Column(
         mainAxisSize: MainAxisSize.max,
