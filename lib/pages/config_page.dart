@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
@@ -7,6 +8,8 @@ class ConfigPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column();
+    return Scaffold(
+      appBar: AppBar(title: const Text("Settings")),
+    );
   }
 }
