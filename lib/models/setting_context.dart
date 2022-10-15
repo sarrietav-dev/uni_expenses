@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class SettingContext {
   bool isDoubleRide;
   double busPrice;
