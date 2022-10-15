@@ -14,6 +14,10 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Settings")),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.of(context).pop(),
+        child: const Icon(Icons.save),
+      ),
       body: Column(children: [
         CheckboxListTile(
           value: _isDoubleRide,
