@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uni_expenses/constants/routes.dart';
-import 'expense_input.dart';
+import '../widgets/expense_input.dart';
 
 class ExpensePage extends StatefulWidget {
   final String title;

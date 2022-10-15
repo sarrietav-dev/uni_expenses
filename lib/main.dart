@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uni_expenses/constants/routes.dart';
 import 'package:uni_expenses/pages/settings_page.dart';
-import 'package:uni_expenses/widgets/expense_page.dart';
+import 'package:uni_expenses/pages/expense_page.dart';
 
 void main() {
   runApp(const MyApp());
