@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -27,6 +28,25 @@ class _SettingsPageState extends State<SettingsPage> {
           title: const Text("Double ride"),
           controlAffinity: ListTileControlAffinity.leading,
         ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            children: [
+              const Text("Bus price: "),
+              const SizedBox(width: 10),
+              Expanded(
+                child: TextField(
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.price_change_outlined)
+                  ),
+                ),
+              )
+            ],
+          ),
+        )
       ]),
     );
   }
