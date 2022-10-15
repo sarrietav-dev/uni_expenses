@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uni_expenses/constants/routes.dart';
 import 'package:uni_expenses/pages/config_page.dart';
 import 'package:uni_expenses/widgets/expense_page.dart';
 
@@ -17,8 +18,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        "/": (context) => const ExpensePage(title: "College expenses"),
-        "/settings": (context) => const ConfigPage(),
+        AppRoute.home.route: (context) =>
+            const ExpensePage(title: "College expenses"),
+        AppRoute.settings.route: (context) => const ConfigPage(),
       },
     );
   }
