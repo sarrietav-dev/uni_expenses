@@ -10,7 +10,8 @@ class LocalStorageSettingService implements ISettingsService {
     var sharedPreferences = await SharedPreferences.getInstance();
     return sharedPreferences.get("settings") != null
         ? SettingContext.fromJson(
-            object: sharedPreferences.get("settings") as Map<String, dynamic>)
+            object: jsonDecode(sharedPreferences.get("settings").toString())
+                as Map<String, dynamic>)
         : SettingContext(busPrice: 2700, isDoubleRide: false);
   }
 

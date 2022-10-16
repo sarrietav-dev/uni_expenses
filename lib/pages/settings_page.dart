@@ -13,8 +13,12 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  late bool _isDoubleRide;
-  late double _busPrice;
+  bool _isDoubleRide;
+  double _busPrice;
+
+  _SettingsPageState()
+      : _isDoubleRide = false,
+        _busPrice = 0.0;
 
   @override
   void initState() {
@@ -61,9 +65,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 child: TextField(
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      prefixIcon: Icon(Icons.price_change_outlined)),
+                  decoration: InputDecoration(
+                      border: const OutlineInputBorder(),
+                      hintText: "Current bus price: $_busPrice",
+                      prefixIcon: const Icon(Icons.price_change_outlined)),
                   onChanged: (value) => setState(() {
                     _busPrice = double.tryParse(value) ?? 0;
                   }),
