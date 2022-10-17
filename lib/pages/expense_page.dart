@@ -7,8 +7,7 @@ class ExpensePage extends StatefulWidget {
   final String title;
   final SettingContext settings;
 
-  const ExpensePage(
-      {super.key, required this.title, required this.settings});
+  const ExpensePage({super.key, required this.title, required this.settings});
 
   @override
   State<ExpensePage> createState() => _ExpensePageState();
@@ -50,8 +49,9 @@ class _ExpensePageState extends State<ExpensePage> {
               _InputLayoutWrapper(
                 child: ExpenseInput(
                   icon: const Icon(Icons.bus_alert),
-                  expensePrice: 2700,
-                  onChanged: (price) => handleInputChange(price, "food"),
+                  expensePrice: widget.settings.busPrice,
+                  onChanged: (price) => handleInputChange(
+                      widget.settings.isDoubleRide ? price * 2 : price, "food"),
                 ),
               ),
               _InputLayoutWrapper(
