@@ -5,17 +5,14 @@ import 'package:uni_expenses/models/setting_context.dart';
 import 'package:uni_expenses/pages/settings_page.dart';
 import 'package:uni_expenses/pages/expense_page.dart';
 import 'package:uni_expenses/services/local_storage_settings_service.dart';
-import 'package:uni_expenses/services/settings_service.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
-      create: (_) => LocalStorageSettingService(), child: MyApp()));
+      create: (_) => LocalStorageSettingService(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
-
-  final ISettingsService _settingsService = LocalStorageSettingService();
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +23,20 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        AppRoute.home.route: (context) => FutureBuilder(
-              future: _settingsService.getSettings(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<SettingContext> snapshot) {
-                if (snapshot.hasData) {
-                  return ExpensePage(
-                      title: "College Expenses", settings: snapshot.data!);
-                } else {
-                  return const Center(child: CircularProgressIndicator());
-                }
-              },
+        AppRoute.home.route: (context) => Consumer<LocalStorageSettingService>(
+              builder: (context, settingsService, child) => FutureBuilder(
+                future: settingsService.getSettings(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return ExpensePage(
+                        title: "College expenses",
+                        settings: snapshot.data as SettingContext);
+                  } else {
+                    return child!;
+                  }
+                },
+              ),
+              child: const Center(child: CircularProgressIndicator()),
             ),
         AppRoute.settings.route: (context) =>
             SettingsPage(settingsService: LocalStorageSettingService()),
