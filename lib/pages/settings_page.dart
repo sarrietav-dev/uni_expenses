@@ -48,6 +48,7 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
       body: Column(children: [
         CheckboxListTile(
+          key: const Key("isDoubleRideSettingInput"),
           value: _isDoubleRide,
           onChanged: (value) => setState(() {
             _isDoubleRide = value ?? false;
@@ -63,6 +64,7 @@ class _SettingsPageState extends State<SettingsPage> {
               const SizedBox(width: 10),
               Expanded(
                 child: TextField(
+                  key: const Key("busPriceSettingInput"),
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                   decoration: InputDecoration(
