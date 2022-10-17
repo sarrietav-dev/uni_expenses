@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:uni_expenses/constants/routes.dart';
 import 'package:uni_expenses/models/setting_context.dart';
 import 'package:uni_expenses/pages/settings_page.dart';
@@ -7,7 +8,8 @@ import 'package:uni_expenses/services/local_storage_settings_service.dart';
 import 'package:uni_expenses/services/settings_service.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (_) => LocalStorageSettingService(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
