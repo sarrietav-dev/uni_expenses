@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:uni_expenses/constants/routes.dart';
+import 'package:uni_expenses/models/setting_context.dart';
 import 'package:uni_expenses/pages/settings_page.dart';
 import 'package:uni_expenses/pages/expense_page.dart';
 import 'package:uni_expenses/services/local_storage_settings_service.dart';
+import 'package:uni_expenses/services/settings_service.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final ISettingsService _settingsService = LocalStorageSettingService();
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +24,18 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        AppRoute.home.route: (context) =>
-            const ExpensePage(title: "College expenses"),
+        AppRoute.home.route: (context) => FutureBuilder(
+              future: _settingsService.getSettings(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<SettingContext> snapshot) {
+                if (snapshot.hasData) {
+                  return ExpensePage(
+                      title: "College Expenses", settings: snapshot.data!);
+                } else {
+                  return const Center(child: CircularProgressIndicator());
+                }
+              },
+            ),
         AppRoute.settings.route: (context) =>
             SettingsPage(settingsService: LocalStorageSettingService()),
       },

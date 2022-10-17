@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:uni_expenses/constants/routes.dart';
+import 'package:uni_expenses/models/setting_context.dart';
 import '../widgets/expense_input.dart';
 
 class ExpensePage extends StatefulWidget {
   final String title;
+  final SettingContext settings;
 
-  const ExpensePage({super.key, required this.title});
+  const ExpensePage(
+      {super.key, required this.title, required this.settings});
 
   @override
   State<ExpensePage> createState() => _ExpensePageState();
